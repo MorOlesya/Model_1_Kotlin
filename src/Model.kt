@@ -7,7 +7,7 @@ fun main() {
     val dragon = Enemy()
     val enemyCharacter = Character()
 
-    elf.createHero("Emir", 5,100,23,50,"Посох", "Огонь")
+    elf.createHero("Emir", 5,150,23,50,"Посох", "Огонь")
     friendlyCharacter.createFriendlyCharacter(elf)
     voin.createHero("Eren", 10,150,50,0,"Меч", "Физ")
     friendlyCharacter.createFriendlyCharacter(voin)
@@ -38,6 +38,8 @@ fun main() {
     println()
     ork.Attack(voin, ork)
     println("================")
+    val user = Hero()
+    user.createHero("User", 5,150,23,50,"Посох", "Огонь")
 
     while (true) {
         println("==== КВЕСТ ====")
@@ -49,12 +51,12 @@ fun main() {
         println("Всего 3 дверей. За одной мгноваенная смерть, за другой монстр, за третей проход. (нужно ввести номер двери)")
         var choice: Int = readln().toInt()
         if (choice == 1) {
-            elf.death()
+            user.death()
             println("Вы проиграли!")
             continue
         } else if (choice == 2) {
             println("Вас атакует Орк!")
-            ork.Attack(elf, ork)
+            ork.Attack(user, ork)
         } else if (choice == 3) {
             println("Вы прошли дальше!")
         } else {
@@ -70,14 +72,14 @@ fun main() {
             println("Вы прошли!")
         } else {
             println("Неверно! На вас напал Орк.")
-            ork.Attack(elf, ork)
+            ork.Attack(user, ork)
         }
         println("================")
         println("Задание 3")
         println("================")
         println("Вам нужно сразиться с Боссом")
-        dragon.Attack(elf, dragon)
-        if (elf.hp > 0) {
+        dragon.Attack(user, dragon)
+        if (user.hp > 0) {
             println("Вы выжили! Поздравляю!")
             println("Вы нашли сокровище!")
         } else {
